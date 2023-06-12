@@ -1,5 +1,4 @@
 'use client';
-import { Categories, Category } from '@spotify/web-api-ts-sdk/dist/mjs/types';
 import Image from 'next/image';
 import { FC } from 'react';
 
@@ -9,7 +8,6 @@ interface SongItemProps {
 }
 
 const PlaylistSongItem: FC<SongItemProps> = ({ onClick, data }) => {
-  console.log(data);
   return (
     <div
       onClick={() => {}}
@@ -39,6 +37,7 @@ const PlaylistSongItem: FC<SongItemProps> = ({ onClick, data }) => {
       <div className="flex flex-col items-start w-full pt-4 gap-y-1">
         <p className="font-semibold truncate w-full">{data.name}</p>
       </div>
+
       {/* <div className="absolute bottom-24 right-5">
         <PlayButton />
       </div> */}

@@ -1,13 +1,15 @@
 'use client';
 import CategorySongItem from '@/components/CategorySongItem';
 import Header from '@/components/Header';
-import PlaylistSongItem from '@/components/PlaylistSongItem';
+
 import { spotifyClient } from '@/spotify/client';
 import {
   Categories,
   PlaylistsWithTrackReferences,
 } from '@spotify/web-api-ts-sdk/dist/mjs/types';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import PlaylistSongItem from './components/PlaylistSongItem';
 
 const Deneme = () => {
   const [categories, setCategories] = useState<Categories>();
@@ -54,10 +56,13 @@ const Deneme = () => {
       "
         >
           {playlist &&
-            playlist.playlists.items.map((item) => (
-              <PlaylistSongItem onClick={() => {}} key={item.id} data={item} />
+            playlist.playlists.items.slice(1).map((item) => (
+              <Link href={item.href} key={item.id}>
+                <PlaylistSongItem onClick={() => {}} data={item} />
+              </Link>
             ))}
         </div>
+        {/* <pre>{JSON.stringify(playlist?.playlists.items, null, 2)}</pre> */}
       </div>
       <div className="mt-2 mb-7 px-6">
         <div className="flex justify-between items-center">
@@ -78,10 +83,13 @@ const Deneme = () => {
         >
           {categories &&
             categories.categories.items.map((item) => (
-              <CategorySongItem onClick={() => {}} key={item.id} data={item} />
+              <Link href={`categories/${item.id}`} key={item.id}>
+                <CategorySongItem onClick={() => {}} data={item} />
+              </Link>
             ))}
         </div>
       </div>
+      <pre>{JSON.stringify(categories, null, 2)}</pre>
     </div>
   );
 };
