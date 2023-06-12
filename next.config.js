@@ -2,7 +2,9 @@ const { hostname } = require('os');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: { remotePatterns: [{ hostname: 't.scdn.co' }] },
+  images: {
+    domains: ['t.scdn.co', 'api.spotify.com', 'i.scdn.co'],
+  },
 };
 
 module.exports = nextConfig;
