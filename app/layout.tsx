@@ -1,3 +1,4 @@
+import Sidebar from '@/components/Sidebar';
 import { Inter } from 'next/font/google';
 import './globals.css';
 
@@ -15,7 +16,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Sidebar>{children}</Sidebar>
+      </body>
     </html>
   );
 }
