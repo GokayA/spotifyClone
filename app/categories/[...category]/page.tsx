@@ -1,20 +1,24 @@
 'use client';
-import Header from '@/components/Header';
 import { spotifyClient } from '@/spotify/client';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { FC, useEffect, useState } from 'react';
+
+import Header from '@/components/Header';
 import TrackItemForCategory from './components/TrackItemForCategory';
 
 interface pageProps {
-  params: any;
-  headers: string;
-  query: string;
-  name: string;
+  params: {
+    category: string;
+  };
+  searchParams: {
+    keyword: string;
+  };
 }
 
-const CategoryPage: FC<pageProps> = ({ params }) => {
+const CategoryPage: FC<pageProps> = ({ params, searchParams }) => {
   const [response, setResponse] = useState<any>();
+
+  console.log(searchParams);
 
   useEffect(() => {
     const fetchCategoryTracks = async () => {
@@ -34,7 +38,7 @@ const CategoryPage: FC<pageProps> = ({ params }) => {
       <div className="mt-2 mb-7 px-6">
         <div className="flex justify-between items-center">
           <h1 className="text-white text-2xl font-semibold">
-            Featured Categories
+            {searchParams.keyword}
           </h1>
         </div>
         <div
@@ -58,7 +62,6 @@ const CategoryPage: FC<pageProps> = ({ params }) => {
             ))}
         </div>
       </div>
-      <pre>{JSON.stringify(params, null, 2)}</pre>
     </div>
   );
 };

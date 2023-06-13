@@ -83,7 +83,13 @@ const Deneme = () => {
         >
           {categories &&
             categories.categories.items.map((item) => (
-              <Link href={`categories/${item.id}`} key={item.id}>
+              <Link
+                href={{
+                  pathname: `categories/${item.id}`,
+                  query: { keyword: item.name },
+                }}
+                key={item.id}
+              >
                 <CategorySongItem onClick={() => {}} data={item} />
               </Link>
             ))}

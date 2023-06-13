@@ -4,7 +4,7 @@ import { spotifyClient } from '@/spotify/client';
 import { Categories } from '@spotify/web-api-ts-sdk/dist/mjs/types';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
   const [response, setCategories] = useState<Categories>();
