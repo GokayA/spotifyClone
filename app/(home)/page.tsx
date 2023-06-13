@@ -1,13 +1,19 @@
 'use client';
+import Header from '@/components/Header';
 
 import { spotifyClient } from '@/spotify/client';
-import { Categories } from '@spotify/web-api-ts-sdk/dist/mjs/types';
-import Image from 'next/image';
+import {
+  Categories,
+  PlaylistsWithTrackReferences,
+} from '@spotify/web-api-ts-sdk/dist/mjs/types';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import CategoryItem from './components/CategoryItem';
+import FeaturedPlaylistItem from './components/FeaturedPlaylistItem';
 
-export default function Home() {
-  const [response, setCategories] = useState<Categories>();
+const Deneme = () => {
+  const [categories, setCategories] = useState<Categories>();
+  const [playlist, setPlaylist] = useState<PlaylistsWithTrackReferences>();
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -17,29 +23,85 @@ export default function Home() {
     fetchCategories();
   }, []);
 
+  useEffect(() => {
+    const fetchPlaylist = async () => {
+      const list = await spotifyClient.browse.getFeaturedPlaylists();
+      setPlaylist(list);
+    };
+    fetchPlaylist();
+  }, []);
+
   return (
-    <main className="">
-      <div className="flex flex-col justify-center items-center">
-        {response &&
-          response.categories.items.map((category) => (
-            <Link
-              key={category.id}
-              href={`categories/${category.id}`}
-              className="flex"
-            >
-              <div className="relative h-72 w-72">
-                <Image
-                  src={category.icons[0].url}
-                  alt={`${category.name} category image`}
-                  fill
-                  className="object-contain"
-                  quality={100}
-                />
-              </div>
-              <div>{category.name}</div>
-            </Link>
-          ))}
+    <div className="bg-neutral-900 rounded-lg h-full w-full overflow-hidden overflow-y-auto">
+      <Header>
+        <h1 className="text-white text-3xl font-semibold">Welcome Back!</h1>
+      </Header>
+      <div className="mt-2 mb-7 px-6">
+        <div className="flex justify-between items-center">
+          <h1 className="text-white text-2xl font-semibold">
+            Featured Playlistss
+          </h1>
+        </div>
+        <div
+          className="
+        grid 
+        grid-cols-2 
+        sm:grid-cols-3 
+        md:grid-cols-3 
+        lg:grid-cols-4 
+        xl:grid-cols-5 
+        2xl:grid-cols-8 
+        gap-4 
+        mt-4
+      "
+        >
+          {playlist &&
+            playlist.playlists.items.slice(1).map((item) => (
+              <Link
+                href={{
+                  pathname: `playlists/${item.id}`,
+                  query: { subtitle: item.name },
+                }}
+                key={item.id}
+              >
+                <FeaturedPlaylistItem onClick={() => {}} data={item} />
+              </Link>
+            ))}
+        </div>
       </div>
-    </main>
+      <div className="mt-2 mb-7 px-6">
+        <div className="flex justify-between items-center">
+          <h1 className="text-white text-2xl font-semibold">Categories</h1>
+        </div>
+        <div
+          className="
+        grid 
+        grid-cols-2 
+        sm:grid-cols-3 
+        md:grid-cols-3 
+        lg:grid-cols-4 
+        xl:grid-cols-5 
+        2xl:grid-cols-8 
+        gap-4 
+        mt-4
+      "
+        >
+          {categories &&
+            categories.categories.items.map((item) => (
+              <Link
+                href={{
+                  pathname: `categories/${item.id}`,
+                  query: { subtitle: item.name },
+                }}
+                key={item.id}
+              >
+                <CategoryItem onClick={() => {}} data={item} />
+              </Link>
+            ))}
+        </div>
+      </div>
+    </div>
   );
-}
+};
+
+export default Deneme;
