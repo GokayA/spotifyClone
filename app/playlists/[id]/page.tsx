@@ -7,10 +7,14 @@ import TrackItem from './components/TrackItem';
 
 interface pageProps {
   params: any;
+  searchParams: {
+    subtitle: string;
+  };
 }
 
-const CategoryPage: FC<pageProps> = ({ params }) => {
+const CategoryPage: FC<pageProps> = ({ params, searchParams }) => {
   const [response, setResponse] = useState<any>();
+
   useEffect(() => {
     const effect = async () => {
       const resp = await spotifyClient.playlists.getPlaylistItems(params.id);
@@ -29,7 +33,7 @@ const CategoryPage: FC<pageProps> = ({ params }) => {
       <div className="mt-2 mb-7 px-6">
         <div className="flex justify-between items-center">
           <h1 className="text-white text-2xl font-semibold">
-            Featured Playlists
+            {searchParams.subtitle}
           </h1>
         </div>
         <div
@@ -56,7 +60,6 @@ const CategoryPage: FC<pageProps> = ({ params }) => {
               </Link>
             ))}
         </div>
-        <pre>{JSON.stringify(response, null, 2)}</pre>
       </div>
     </div>
   );

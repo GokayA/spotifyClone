@@ -7,7 +7,7 @@ interface SongItemProps {
   data: any;
 }
 
-const TrackItemForCategory: FC<SongItemProps> = ({ onClick, data }) => {
+const PlaylistsForCategory: FC<SongItemProps> = ({ onClick, data }) => {
   return (
     <div
       onClick={() => {}}
@@ -45,4 +45,4 @@ const TrackItemForCategory: FC<SongItemProps> = ({ onClick, data }) => {
   );
 };
 
-export default TrackItemForCategory;
+export default PlaylistsForCategory;

@@ -16,7 +16,6 @@ export default function Home() {
     };
     fetchCategories();
   }, []);
-  console.log(response?.categories);
 
   return (
     <main className="">
@@ -41,8 +40,6 @@ export default function Home() {
             </Link>
           ))}
       </div>
-
-      <pre>{JSON.stringify(response, null, 4)}</pre>
     </main>
   );
 }

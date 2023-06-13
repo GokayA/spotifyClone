@@ -8,7 +8,6 @@ interface SongItemProps {
 }
 
 const TrackItem: FC<SongItemProps> = ({ onClick, data }) => {
-  console.log('>>', data);
   return (
     <div
       onClick={() => {}}

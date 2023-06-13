@@ -1,5 +1,4 @@
 'use client';
-import CategorySongItem from '@/components/CategorySongItem';
 import Header from '@/components/Header';
 
 import { spotifyClient } from '@/spotify/client';
@@ -9,7 +8,8 @@ import {
 } from '@spotify/web-api-ts-sdk/dist/mjs/types';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import PlaylistSongItem from './components/PlaylistSongItem';
+import CategoryItem from './components/CategoryItem';
+import FeaturedPlaylistItem from './components/FeaturedPlaylistItem';
 
 const Deneme = () => {
   const [categories, setCategories] = useState<Categories>();
@@ -39,7 +39,7 @@ const Deneme = () => {
       <div className="mt-2 mb-7 px-6">
         <div className="flex justify-between items-center">
           <h1 className="text-white text-2xl font-semibold">
-            Featured Playlists
+            Featured Playlistss
           </h1>
         </div>
         <div
@@ -57,12 +57,17 @@ const Deneme = () => {
         >
           {playlist &&
             playlist.playlists.items.slice(1).map((item) => (
-              <Link href={item.href} key={item.id}>
-                <PlaylistSongItem onClick={() => {}} data={item} />
+              <Link
+                href={{
+                  pathname: `playlists/${item.id}`,
+                  query: { subtitle: item.name },
+                }}
+                key={item.id}
+              >
+                <FeaturedPlaylistItem onClick={() => {}} data={item} />
               </Link>
             ))}
         </div>
-        {/* <pre>{JSON.stringify(playlist?.playlists.items, null, 2)}</pre> */}
       </div>
       <div className="mt-2 mb-7 px-6">
         <div className="flex justify-between items-center">
@@ -86,16 +91,15 @@ const Deneme = () => {
               <Link
                 href={{
                   pathname: `categories/${item.id}`,
-                  query: { keyword: item.name },
+                  query: { subtitle: item.name },
                 }}
                 key={item.id}
               >
-                <CategorySongItem onClick={() => {}} data={item} />
+                <CategoryItem onClick={() => {}} data={item} />
               </Link>
             ))}
         </div>
       </div>
-      <pre>{JSON.stringify(categories, null, 2)}</pre>
     </div>
   );
 };

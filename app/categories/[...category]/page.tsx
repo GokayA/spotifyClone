@@ -4,21 +4,19 @@ import Link from 'next/link';
 import { FC, useEffect, useState } from 'react';
 
 import Header from '@/components/Header';
-import TrackItemForCategory from './components/TrackItemForCategory';
+import PlaylistsForCategory from './components/PlaylistsForCategory';
 
 interface pageProps {
   params: {
     category: string;
   };
   searchParams: {
-    keyword: string;
+    subtitle: string;
   };
 }
 
 const CategoryPage: FC<pageProps> = ({ params, searchParams }) => {
   const [response, setResponse] = useState<any>();
-
-  console.log(searchParams);
 
   useEffect(() => {
     const fetchCategoryTracks = async () => {
@@ -29,7 +27,6 @@ const CategoryPage: FC<pageProps> = ({ params, searchParams }) => {
     };
     fetchCategoryTracks();
   }, [params]);
-  console.log(params);
   return (
     <div className="bg-neutral-900 rounded-lg h-full w-full overflow-hidden overflow-y-auto">
       <Header>
@@ -38,7 +35,7 @@ const CategoryPage: FC<pageProps> = ({ params, searchParams }) => {
       <div className="mt-2 mb-7 px-6">
         <div className="flex justify-between items-center">
           <h1 className="text-white text-2xl font-semibold">
-            {searchParams.keyword}
+            {searchParams.subtitle}
           </h1>
         </div>
         <div
@@ -56,8 +53,14 @@ const CategoryPage: FC<pageProps> = ({ params, searchParams }) => {
         >
           {response &&
             response.playlists.items.map((playlist: any) => (
-              <Link key={playlist.id} href={`/playlists/${playlist.id}`}>
-                <TrackItemForCategory onClick={() => {}} data={playlist} />
+              <Link
+                href={{
+                  pathname: `/playlists/${playlist.id}`,
+                  query: { subtitle: playlist.name },
+                }}
+                key={playlist.id}
+              >
+                <PlaylistsForCategory onClick={() => {}} data={playlist} />
               </Link>
             ))}
         </div>
