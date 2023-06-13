@@ -58,7 +58,7 @@ const CategoryPage: FC<pageProps> = ({ params, searchParams }) => {
                   pathname: `/playlists/${playlist.id}`,
                   query: { subtitle: playlist.name },
                 }}
-                key={playlist.id}
+                key={playlist.name}
               >
                 <PlaylistsForCategory onClick={() => {}} data={playlist} />
               </Link>
