@@ -2,12 +2,12 @@
 import Image from 'next/image';
 import { FC } from 'react';
 
-interface SearchItemProps {
+interface LibraryContentProps {
   onClick?: () => void;
   data: any;
 }
 
-const SearchItem: FC<SearchItemProps> = ({ onClick, data }) => {
+const LibraryContent: FC<LibraryContentProps> = ({ onClick, data }) => {
   // const handleClick = () => {
   //   if (onClick) {
   //     return onClick('');
@@ -35,7 +35,7 @@ const SearchItem: FC<SearchItemProps> = ({ onClick, data }) => {
       >
         <Image
           fill
-          src={data.album.images[0].url || 'imageurl'}
+          src={data.images[0].url || 'imageurl'}
           alt="MediaItem"
           className="object-cover"
         />
@@ -43,11 +43,11 @@ const SearchItem: FC<SearchItemProps> = ({ onClick, data }) => {
       <div className="flex flex-col gap-y-1 overflow-hidden">
         <p className="text-white truncate">{data.name}</p>
         <p className="text-neutral-400 text-sm truncate">
-          By {data.album.artists[0].name}
+          By {data.artists[0].name}
         </p>
       </div>
     </div>
   );
 };
 
-export default SearchItem;
+export default LibraryContent;
