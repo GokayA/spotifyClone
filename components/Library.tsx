@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { TbPlaylist } from 'react-icons/tb';
-import MediaItem from './MediaItem';
+import MediaItem from '../app/search/component/SearchItem';
 interface LibraryProps {}
 
 const Library: FC<LibraryProps> = ({}) => {

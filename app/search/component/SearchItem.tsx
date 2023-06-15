@@ -3,19 +3,20 @@ import Image from 'next/image';
 import { FC } from 'react';
 
 interface MediaItemProps {
-  onClick?: (id: string) => void;
+  onClick?: () => void;
+  data: any;
 }
 
-const MediaItem: FC<MediaItemProps> = ({ onClick }) => {
-  const handleClick = () => {
-    if (onClick) {
-      return onClick('');
-    }
-    //Todo default turn on player
-  };
+const SearchItem: FC<MediaItemProps> = ({ onClick, data }) => {
+  // const handleClick = () => {
+  //   if (onClick) {
+  //     return onClick('');
+  //   }
+  //   //Todo default turn on player
+  // };
   return (
     <div
-      onClick={handleClick}
+      // onClick={handleClick}
       className=" flex 
         items-center 
         gap-x-3 
@@ -34,17 +35,19 @@ const MediaItem: FC<MediaItemProps> = ({ onClick }) => {
       >
         <Image
           fill
-          src={'/images/liked.png' || 'imageurl'}
+          src={data.album.images[0].url || 'imageurl'}
           alt="MediaItem"
           className="object-cover"
         />
       </div>
       <div className="flex flex-col gap-y-1 overflow-hidden">
-        <p className="text-white truncate">title</p>
-        <p className="text-neutral-400 text-sm truncate">By author</p>
+        <p className="text-white truncate">{data.name}</p>
+        <p className="text-neutral-400 text-sm truncate">
+          By {data.album.artists[0].name}
+        </p>
       </div>
     </div>
   );
 };
 
-export default MediaItem;
+export default SearchItem;
