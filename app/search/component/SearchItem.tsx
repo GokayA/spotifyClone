@@ -8,12 +8,7 @@ interface SearchItemProps {
 }
 
 const SearchItem: FC<SearchItemProps> = ({ onClick, data }) => {
-  // const handleClick = () => {
-  //   if (onClick) {
-  //     return onClick('');
-  //   }
-  //   //Todo default turn on player
-  // };
+  console.log(data);
   return (
     <div
       // onClick={handleClick}

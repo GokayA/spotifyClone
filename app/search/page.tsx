@@ -22,16 +22,15 @@ const Search = ({ searchParams }: searchProps) => {
   const [search, setSearch] = useState<SearchResults>();
 
   useEffect(() => {
-    if (searchParams.title.length === 0) {
-      return;
-    }
-
     const search = async () => {
+      if (searchParams.title.trim().length === 0) {
+        return;
+      }
       const result = await spotifyClient.search(searchParams.title, ['track']);
       setSearch(result);
     };
     search();
-  });
+  }, [searchParams.title]);
 
   return (
     <div
@@ -62,7 +61,6 @@ const Search = ({ searchParams }: searchProps) => {
             </Link>
           ))}
       </div>
-      <pre>{JSON.stringify(search, null, 2)}</pre>
     </div>
   );
 };

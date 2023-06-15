@@ -28,7 +28,7 @@ const Sidebar = ({ children }: SidebarProps) => {
       {
         icon: BiSearch,
         label: 'Search',
-        href: '/search',
+        href: '/search?title=',
         active: pathname === '/search',
       },
     ],
