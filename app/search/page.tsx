@@ -8,16 +8,15 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import SearchItem from './component/SearchItem';
 
-interface searchProps {
+interface SearchProps {
   searchParams: {
     title: string;
   };
-  search?: SearchResults;
 }
 
 export const revalidate = 0;
 
-const Search = ({ searchParams }: searchProps) => {
+const Search = ({ searchParams }: SearchProps) => {
   // TODO NEED TO FIX SEARCH FUNCTION
   const [search, setSearch] = useState<SearchResults>();
 
@@ -66,5 +65,3 @@ const Search = ({ searchParams }: searchProps) => {
 };
 
 export default Search;
-{
-}
