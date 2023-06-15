@@ -26,9 +26,7 @@ const CategoryPage: FC<pageProps> = ({ params, searchParams }) => {
   return (
     <div className="bg-neutral-900 rounded-lg h-full w-full overflow-hidden overflow-y-auto">
       <Header>
-        <h1 className="text-white text-3xl font-semibold">
-          {/* {response.items.track.album} */}
-        </h1>
+        <h1 className="text-white text-3xl font-semibold">{/*  */}</h1>
       </Header>
       <div className="mt-2 mb-7 px-6">
         <div className="flex justify-between items-center">
@@ -56,7 +54,7 @@ const CategoryPage: FC<pageProps> = ({ params, searchParams }) => {
                 href={item.track.album.external_urls.spotify}
                 key={item.id}
               >
-                <TrackItem onClick={() => {}} data={item} />
+                <TrackItem data={item} />
               </Link>
             ))}
         </div>
