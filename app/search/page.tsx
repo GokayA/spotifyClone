@@ -54,7 +54,7 @@ const Search = ({ searchParams }: SearchProps) => {
             <Link href={song.external_urls.spotify} key={song.id}>
               <div className="flex items-center gap-x-4 w-full">
                 <div className="flex-1">
-                  <SearchItem onClick={() => {}} data={song} />
+                  <SearchItem data={song} />
                 </div>
               </div>
             </Link>

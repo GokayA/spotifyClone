@@ -1,6 +1,5 @@
 'use client';
 import { spotifyClient } from '@/spotify/client';
-import { RecommendationsResponse } from '@spotify/web-api-ts-sdk/dist/mjs/endpoints/RecommendationsEndpoints';
 import { NewReleases } from '@spotify/web-api-ts-sdk/dist/mjs/types';
 import Link from 'next/link';
 import { FC, useEffect, useState } from 'react';
@@ -28,7 +27,6 @@ const Library: FC<LibraryProps> = ({}) => {
           <p className="text-neutral-400 font-medium text-md">New Releases</p>
         </div>
         <AiOutlinePlus
-          onClick={() => {}}
           size={20}
           className="text-neutral-400 cursor-pointer hover:text-white transition"
         />
@@ -37,7 +35,7 @@ const Library: FC<LibraryProps> = ({}) => {
         {libraryContent &&
           libraryContent.albums.items.map((song) => (
             <Link href={song.external_urls.spotify} key={song.id}>
-              <LibraryContent onClick={() => {}} data={song} key={song.id} />
+              <LibraryContent data={song} key={song.id} />
             </Link>
           ))}
       </div>

@@ -3,20 +3,12 @@ import Image from 'next/image';
 import { FC } from 'react';
 
 interface LibraryContentProps {
-  onClick?: () => void;
   data: any;
 }
 
-const LibraryContent: FC<LibraryContentProps> = ({ onClick, data }) => {
-  // const handleClick = () => {
-  //   if (onClick) {
-  //     return onClick('');
-  //   }
-  //   //Todo default turn on player
-  // };
+const LibraryContent: FC<LibraryContentProps> = ({ data }) => {
   return (
     <div
-      // onClick={handleClick}
       className=" flex 
         items-center 
         gap-x-3 

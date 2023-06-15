@@ -2,11 +2,9 @@
 import { useRouter } from 'next/navigation';
 import { FC } from 'react';
 import { BiSearch } from 'react-icons/bi';
-import { FaUserAlt } from 'react-icons/fa';
 import { HiHome } from 'react-icons/hi';
 import { RxCaretLeft, RxCaretRight } from 'react-icons/rx';
 import { twMerge } from 'tailwind-merge';
-import Button from './Button';
 
 interface HeaderProps {
   children: React.ReactNode;

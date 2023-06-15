@@ -64,7 +64,7 @@ const Deneme = () => {
                 }}
                 key={item.id}
               >
-                <FeaturedPlaylistItem onClick={() => {}} data={item} />
+                <FeaturedPlaylistItem data={item} />
               </Link>
             ))}
         </div>
@@ -95,7 +95,7 @@ const Deneme = () => {
                 }}
                 key={item.id}
               >
-                <CategoryItem onClick={() => {}} data={item} />
+                <CategoryItem data={item} />
               </Link>
             ))}
         </div>

@@ -60,7 +60,7 @@ const CategoryPage: FC<pageProps> = ({ params, searchParams }) => {
                 }}
                 key={playlist.name}
               >
-                <PlaylistsForCategory onClick={() => {}} data={playlist} />
+                <PlaylistsForCategory data={playlist} />
               </Link>
             ))}
         </div>

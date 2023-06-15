@@ -3,15 +3,12 @@ import Image from 'next/image';
 import { FC } from 'react';
 
 interface SearchItemProps {
-  onClick?: () => void;
   data: any;
 }
 
-const SearchItem: FC<SearchItemProps> = ({ onClick, data }) => {
-  console.log(data);
+const SearchItem: FC<SearchItemProps> = ({ data }) => {
   return (
     <div
-      // onClick={handleClick}
       className=" flex 
         items-center 
         gap-x-3 

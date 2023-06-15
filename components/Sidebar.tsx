@@ -42,7 +42,6 @@ const Sidebar = ({ children }: SidebarProps) => {
         flex 
         h-full
         `
-        // 'h-[calc(100%-80px)]' //if there is a player add this with full code from github.
       )}
     >
       <div

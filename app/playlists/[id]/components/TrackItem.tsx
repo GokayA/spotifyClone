@@ -3,14 +3,12 @@ import Image from 'next/image';
 import { FC } from 'react';
 
 interface SongItemProps {
-  onClick: (id: string) => void;
   data: any;
 }
 
-const TrackItem: FC<SongItemProps> = ({ onClick, data }) => {
+const TrackItem: FC<SongItemProps> = ({ data }) => {
   return (
     <div
-      onClick={() => {}}
       className="  relative
         group
         flex
@@ -40,10 +38,6 @@ const TrackItem: FC<SongItemProps> = ({ onClick, data }) => {
           By {data.track.album.artists[0].name}
         </p>
       </div>
-
-      {/* <div className="absolute bottom-24 right-5">
-        <PlayButton />
-      </div> */}
     </div>
   );
 };
