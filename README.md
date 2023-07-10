@@ -1,4 +1,4 @@
-# Recipe Food Project
+# Spotify Clone Project
 
 ![Project View](https://raw.githubusercontent.com/GokayA/Portfolio/main/public/Spotify.png)
 
@@ -21,3 +21,4 @@ link: [https://spotify-clone-xi-blush.vercel.app/](https://spotify-clone-xi-blus
 - Nextjs
 - TailwindCSS
 - TypeScript
+- SpotifyAPI
