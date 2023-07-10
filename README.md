@@ -1,6 +1,6 @@
 # Recipe Food Project
 
-![Project View](https://raw.githubusercontent.com/GokayA/Portfolio/main/public/review.png)
+![Project View](https://raw.githubusercontent.com/GokayA/Portfolio/main/public/spotify.png)
 
 This is a Spotify clone page. Able to react featured daily playlist, playlists by categories.
 link: [https://spotify-clone-xi-blush.vercel.app/](https://spotify-clone-xi-blush.vercel.app/)
